@@ -59,8 +59,4 @@ If you find any issues or have suggestions for improvement, please:
 ---
 
 
-
-## Screenshots
-
-
 ![Simulator Screenshot - iPhone 14](Simulator%20Screen%20Shot%20-%20iPhone%2014.
