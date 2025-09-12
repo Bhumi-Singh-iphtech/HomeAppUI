@@ -74,7 +74,7 @@
 		3B5A1B242E6705AB00E5AE13 = {
 			isa = PBXGroup;
 			children = (
-				3B5A1B2F2E6705AB00E5AE13 /* UI */,
+				3B5A1B2F2E6705AB00E5AE13 /* HomeAppUI */,
 				3B5A1B2E2E6705AB00E5AE13 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B5A1B2F2E6705AB00E5AE13 /* UI */ = {
+		3B5A1B2F2E6705AB00E5AE13 /* HomeAppUI */ = {
 			isa = PBXGroup;
 			children = (
 				3BFD46C02E6AC6200060AED3 /* SecondScreen files */,
@@ -100,7 +100,7 @@
 				3B5A1B3B2E6705B100E5AE13 /* LaunchScreen.storyboard */,
 				3B5A1B3E2E6705B100E5AE13 /* Info.plist */,
 			);
-			path = UI;
+			path = HomeAppUI;
 			sourceTree = "<group>";
 		};
 		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */ = {
@@ -159,7 +159,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3B5A1B282E6705AB00E5AE13 /* Build configuration list for PBXProject "SmartHomeUI" */;
+			buildConfigurationList = 3B5A1B282E6705AB00E5AE13 /* Build configuration list for PBXProject "HomeAppUI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -405,7 +405,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B5A1B282E6705AB00E5AE13 /* Build configuration list for PBXProject "SmartHomeUI" */ = {
+		3B5A1B282E6705AB00E5AE13 /* Build configuration list for PBXProject "HomeAppUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B5A1B3F2E6705B100E5AE13 /* Debug */,
