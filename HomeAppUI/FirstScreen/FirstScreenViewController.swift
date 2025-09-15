@@ -40,12 +40,7 @@ class FirstScreenViewController: UIViewController {
     ]
     var selectedDeviceIndex = 0   // 🔹 Added this
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Hide the navigation bar on this first screen
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
+    
     override func viewDidLoad() {
      
         super.viewDidLoad()
