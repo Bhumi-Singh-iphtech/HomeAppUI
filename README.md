@@ -3,11 +3,11 @@
 ## Introduction
 A simple and elegant Home App interface built using Swift and Xcode, demonstrating:
 
-## Dashboard Screen :
+** Dashboard Screen ** :
 Shows tabs for rooms (Living Room, Kitchen, Bedroom), scene buttons (Awakening, Night, Calm, Energetic), and a device list (Air Conditioner, Smart Light, Smart TV)
-## Room Devices Screen :
+** Room Devices Screen **:
 Displays room image and connected devices with control buttons 
-## Device Control Screen :
+** Device Control Screen **:
 Detailed AC control panel with temperature dial, modes (Hot, Cold, Dry Air, Humid), and scheduling options
 
 ---
@@ -70,7 +70,8 @@ We would like to thank the Apple community for their excellent framework and doc
   <img src="Screenshots/Third Screen.png" width="200">
 
 </div>
+
 ![App Demo](Screenshots/Simulator%20Screen%20Recording%20-%20iPhone%2014%20-%202025-09-15%20at%2016.39.14.gif)
  
-</video>
+
 
