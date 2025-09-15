@@ -3,10 +3,12 @@
 ## Introduction
 A simple and elegant Home App interface built using Swift and Xcode, demonstrating:
 
-- Navigation between multiple screens
-- Collection views for tabs, scenes, and devices
-- A custom gradient background
-- A toggle button with callback functionality
+## Dashboard Screen :
+Shows tabs for rooms (Living Room, Kitchen, Bedroom), scene buttons (Awakening, Night, Calm, Energetic), and a device list (Air Conditioner, Smart Light, Smart TV)
+## Room Devices Screen :
+Displays room image and connected devices with control buttons 
+## Device Control Screen :
+Detailed AC control panel with temperature dial, modes (Hot, Cold, Dry Air, Humid), and scheduling options
 
 ---
 
@@ -48,24 +50,19 @@ This project is open source.
 
 
 ---
-
-## Contributing
-Contributions are welcome!  
-If you find any issues or have suggestions for improvement, please: Submit an issue or create a pull request
-
+## Contributing 
+- Contributions are welcome!  
+- If you find any issues or have any suggestions for improvement, please submit an issue or create a pull request.
 ---
-
 ## Support
-If you encounter any problems or have any questions, please contact the project maintainer at [email protected].
+- If you encounter any problems or have any questions, please contact the project maintainer at [email protected].
 ---
-
 
 ## Acknowledgements
-We would like to thank the Apple community for their excellent framework and documentation,which greatly facilitated the development of this project.
+We would like to thank the Apple community for their excellent framework and documentation, which greatly facilitated the development of this project.
+
 ---
-
 ## Screenshots
-
 <div style="display: flex; gap: 10px;">
 
   <img src="Screenshots/First Screen.png" width="200">
@@ -73,10 +70,7 @@ We would like to thank the Apple community for their excellent framework and doc
   <img src="Screenshots/Third Screen.png" width="200">
 
 </div>
-
-
-<video width="600" controls>
-  <source src="Screenshots/Screen Recording.mp4" type="video/mp4">
+![App Demo](Screenshots/Simulator%20Screen%20Recording%20-%20iPhone%2014%20-%202025-09-15%20at%2016.39.14.gif)
  
 </video>
 
