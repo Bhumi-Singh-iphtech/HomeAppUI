@@ -66,17 +66,17 @@ We would like to thank the Apple community for their excellent framework and doc
 
 ## Screenshots
 
-### 🏠 Dashboard Screen
-<img src="Screenshots/First Screen.png" width="300">
+<div style="display: flex; gap: 10px;">
 
-### 🛋️ Room Devices Screen
-<img src="Screenshots/Second Screen.png" width="300">
+  <img src="Screenshots/First Screen.png" width="200">
+  <img src="Screenshots/Second Screen.png" width="200">
+  <img src="Screenshots/Third Screen.png" width="200">
 
-### 📺 Device Control Screen
-<img src="Screenshots/Third Screen.png" width="300">
----
-![App Demo](Screenshots/Screen Recording.mp4)
+</div>
 
 
-
+<video width="600" controls>
+  <source src="Screenshots/Screen Recording.mp4" type="video/mp4">
+ 
+</video>
 
