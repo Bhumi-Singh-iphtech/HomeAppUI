@@ -51,12 +51,32 @@ This project is open source.
 
 ## Contributing
 Contributions are welcome!  
-If you find any issues or have suggestions for improvement, please:
-
-- Submit an issue
-- Or create a pull request
+If you find any issues or have suggestions for improvement, please: Submit an issue or create a pull request
 
 ---
+
+## Support
+If you encounter any problems or have any questions, please contact the project maintainer at [email protected].
+---
+
+
+## Acknowledgements
+We would like to thank the Apple community for their excellent framework and documentation,which greatly facilitated the development of this project.
+---
+
+## Screenshots
+
+### 🏠 Dashboard Screen
+<img src="Screenshots/First Screen.png" width="300">
+
+### 🛋️ Room Devices Screen
+<img src="Screenshots/Second Screen.png" width="300">
+
+### 📺 Device Control Screen
+<img src="Screenshots/Third Screen.png" width="300">
+---
+![App Demo](Screenshots/Screen Recording.mp4)
+
 
 
 
