@@ -576,7 +576,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="images" translatesAutoresizingMaskIntoConstraints="NO" id="nrP-HQ-sBX">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="living" translatesAutoresizingMaskIntoConstraints="NO" id="nrP-HQ-sBX">
                                                 <rect key="frame" x="4" y="116" width="381" height="252"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="381" id="bzJ-OG-0Iz"/>
@@ -1332,7 +1332,7 @@
         <image name="circle.grid.2x2" catalog="system" width="128" height="111"/>
         <image name="digital" width="512" height="512"/>
         <image name="filter" width="512" height="512"/>
-        <image name="images" width="257" height="145"/>
+        <image name="living" width="128" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="power" catalog="system" width="127" height="128"/>

@@ -36,7 +36,7 @@
 		3B44C9EF2E697CE400312211 /* SecondGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGradientView.swift; sourceTree = "<group>"; };
 		3B44FC022E682B41004F65FC /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		3B44FC042E682B8C004F65FC /* DeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
-		3B5A1B2D2E6705AB00E5AE13 /* UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5A1B2D2E6705AB00E5AE13 /* HomeAppUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeAppUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5A1B302E6705AB00E5AE13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5A1B322E6705AB00E5AE13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3B5A1B342E6705AB00E5AE13 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		3B5A1B2E2E6705AB00E5AE13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B5A1B2D2E6705AB00E5AE13 /* UI.app */,
+				3B5A1B2D2E6705AB00E5AE13 /* HomeAppUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B5A1B2C2E6705AB00E5AE13 /* UI */ = {
+		3B5A1B2C2E6705AB00E5AE13 /* HomeAppUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B5A1B412E6705B100E5AE13 /* Build configuration list for PBXNativeTarget "UI" */;
+			buildConfigurationList = 3B5A1B412E6705B100E5AE13 /* Build configuration list for PBXNativeTarget "HomeAppUI" */;
 			buildPhases = (
 				3B5A1B292E6705AB00E5AE13 /* Sources */,
 				3B5A1B2A2E6705AB00E5AE13 /* Frameworks */,
@@ -139,9 +139,9 @@
 			);
 			dependencies = (
 			);
-			name = UI;
+			name = HomeAppUI;
 			productName = UI;
-			productReference = 3B5A1B2D2E6705AB00E5AE13 /* UI.app */;
+			productReference = 3B5A1B2D2E6705AB00E5AE13 /* HomeAppUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B5A1B2C2E6705AB00E5AE13 /* UI */,
+				3B5A1B2C2E6705AB00E5AE13 /* HomeAppUI */,
 			);
 		};
 /* End PBXProject section */
@@ -356,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UI/Info.plist;
+				INFOPLIST_FILE = HomeAppUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -383,7 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UI/Info.plist;
+				INFOPLIST_FILE = HomeAppUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -414,7 +414,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B5A1B412E6705B100E5AE13 /* Build configuration list for PBXNativeTarget "UI" */ = {
+		3B5A1B412E6705B100E5AE13 /* Build configuration list for PBXNativeTarget "HomeAppUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B5A1B422E6705B100E5AE13 /* Debug */,
