@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B02BA802E70354C0082F1B3 /* Toogler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02BA7F2E70354C0082F1B3 /* Toogler.swift */; };
 		3B02BA822E704B830082F1B3 /* TemperatureCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02BA812E704B830082F1B3 /* TemperatureCircleView.swift */; };
 		3B3BAE652E7192CA00967DED /* ModesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3BAE642E7192CA00967DED /* ModesCollectionViewCell.swift */; };
 		3B3BAE672E71A3FB00967DED /* ControlOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3BAE662E71A3FB00967DED /* ControlOptionCell.swift */; };
@@ -22,12 +21,12 @@
 		3B5A1B382E6705AB00E5AE13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A1B362E6705AB00E5AE13 /* Main.storyboard */; };
 		3B5A1B3A2E6705B100E5AE13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A1B392E6705B100E5AE13 /* Assets.xcassets */; };
 		3B5A1B3D2E6705B100E5AE13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A1B3B2E6705B100E5AE13 /* LaunchScreen.storyboard */; };
+		3B989D8F2E796E24001138B4 /* Toogler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B989D8E2E796E24001138B4 /* Toogler.swift */; };
+		3B989D912E796E5F001138B4 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B989D902E796E5F001138B4 /* NavigationHelper.swift */; };
 		3BFD46BE2E6ABA980060AED3 /* DeviceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */; };
-		3BFF6FB12E72EAC000A79F3B /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFF6FB02E72EAC000A79F3B /* NavigationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B02BA7F2E70354C0082F1B3 /* Toogler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toogler.swift; sourceTree = "<group>"; };
 		3B02BA812E704B830082F1B3 /* TemperatureCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureCircleView.swift; sourceTree = "<group>"; };
 		3B3BAE642E7192CA00967DED /* ModesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B3BAE662E71A3FB00967DED /* ControlOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlOptionCell.swift; sourceTree = "<group>"; };
@@ -44,8 +43,9 @@
 		3B5A1B392E6705B100E5AE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5A1B3C2E6705B100E5AE13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B5A1B3E2E6705B100E5AE13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B989D8E2E796E24001138B4 /* Toogler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toogler.swift; sourceTree = "<group>"; };
+		3B989D902E796E5F001138B4 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCollectionCell.swift; sourceTree = "<group>"; };
-		3BFF6FB02E72EAC000A79F3B /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +59,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B3FE0CC2E7A8C200095FDB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B44FC022E682B41004F65FC /* DeviceModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3B4B94F62E73F26C0002C6FE /* ThirdScreen files */ = {
 			isa = PBXGroup;
 			children = (
+				3B63C8A72E796CA60002DFB1 /* View Controller */,
 				3B3BAE662E71A3FB00967DED /* ControlOptionCell.swift */,
 				3B02BA812E704B830082F1B3 /* TemperatureCircleView.swift */,
-				3B4311DE2E6AF36A008C5E39 /* ThirdScreenViewController.swift */,
-				3BFF6FB02E72EAC000A79F3B /* NavigationHelper.swift */,
 				3B3BAE642E7192CA00967DED /* ModesCollectionViewCell.swift */,
 			);
 			path = "ThirdScreen files";
@@ -90,9 +97,11 @@
 		3B5A1B2F2E6705AB00E5AE13 /* HomeAppUI */ = {
 			isa = PBXGroup;
 			children = (
-				3BFD46C02E6AC6200060AED3 /* SecondScreen files */,
 				3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */,
+				3BFD46C02E6AC6200060AED3 /* SecondScreen files */,
 				3B4B94F62E73F26C0002C6FE /* ThirdScreen files */,
+				3B989D922E796E73001138B4 /* Utility */,
+				3B3FE0CC2E7A8C200095FDB1 /* Model */,
 				3B5A1B322E6705AB00E5AE13 /* SceneDelegate.swift */,
 				3B5A1B302E6705AB00E5AE13 /* AppDelegate.swift */,
 				3B5A1B362E6705AB00E5AE13 /* Main.storyboard */,
@@ -103,13 +112,44 @@
 			path = HomeAppUI;
 			sourceTree = "<group>";
 		};
-		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */ = {
+		3B63C8A52E796C5F0002DFB1 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B44C9ED2E697C3500312211 /* SecondScreenViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3B63C8A62E796C890002DFB1 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				3B5A1B342E6705AB00E5AE13 /* FirstScreenViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3B63C8A72E796CA60002DFB1 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B4311DE2E6AF36A008C5E39 /* ThirdScreenViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3B989D922E796E73001138B4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3B989D902E796E5F001138B4 /* NavigationHelper.swift */,
+				3B989D8E2E796E24001138B4 /* Toogler.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3B63C8A62E796C890002DFB1 /* View Controller */,
 				3B44FC042E682B8C004F65FC /* DeviceCell.swift */,
-				3B02BA7F2E70354C0082F1B3 /* Toogler.swift */,
-				3B44FC022E682B41004F65FC /* DeviceModel.swift */,
 			);
 			path = FirstScreen;
 			sourceTree = "<group>";
@@ -117,7 +157,7 @@
 		3BFD46C02E6AC6200060AED3 /* SecondScreen files */ = {
 			isa = PBXGroup;
 			children = (
-				3B44C9ED2E697C3500312211 /* SecondScreenViewController.swift */,
+				3B63C8A52E796C5F0002DFB1 /* View Controller */,
 				3B44C9EF2E697CE400312211 /* SecondGradientView.swift */,
 				3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */,
 			);
@@ -197,14 +237,14 @@
 			files = (
 				3B5A1B352E6705AB00E5AE13 /* FirstScreenViewController.swift in Sources */,
 				3B4311DF2E6AF36A008C5E39 /* ThirdScreenViewController.swift in Sources */,
-				3B02BA802E70354C0082F1B3 /* Toogler.swift in Sources */,
 				3B44FC032E682B41004F65FC /* DeviceModel.swift in Sources */,
 				3B5A1B312E6705AB00E5AE13 /* AppDelegate.swift in Sources */,
 				3B44C9EE2E697C3500312211 /* SecondScreenViewController.swift in Sources */,
+				3B989D8F2E796E24001138B4 /* Toogler.swift in Sources */,
 				3B3BAE672E71A3FB00967DED /* ControlOptionCell.swift in Sources */,
 				3B3BAE652E7192CA00967DED /* ModesCollectionViewCell.swift in Sources */,
 				3B44C9F02E697CE400312211 /* SecondGradientView.swift in Sources */,
-				3BFF6FB12E72EAC000A79F3B /* NavigationHelper.swift in Sources */,
+				3B989D912E796E5F001138B4 /* NavigationHelper.swift in Sources */,
 				3B02BA822E704B830082F1B3 /* TemperatureCircleView.swift in Sources */,
 				3B44FC052E682B8C004F65FC /* DeviceCell.swift in Sources */,
 				3B5A1B332E6705AB00E5AE13 /* SceneDelegate.swift in Sources */,
