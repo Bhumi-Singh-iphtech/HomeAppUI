@@ -49,15 +49,13 @@ class SecondScreenViewController: UIViewController {
             case "Bathroom":
                 RoomView.image = UIImage(named: "bathroom")
             case "Study":
-                RoomView.image = UIImage(named: "Study")
+                RoomView.image = UIImage(named: "study")
             default:
                 RoomView.image = UIImage(named: "defaultRoom")
             }
         }
         
-        // 🔹 ScrollView size (only if NOT using Auto Layout properly)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: 1200)
-
+        
         gradientContainer.backgroundColor = .clear
         collectionView.backgroundColor = .clear
 
