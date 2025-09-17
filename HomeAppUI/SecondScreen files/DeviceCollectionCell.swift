@@ -5,7 +5,6 @@ class DeviceCollectionCell: UICollectionViewCell {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    
     @IBOutlet weak var iconBackground: UIView!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var statusButton: UIButton!
@@ -13,8 +12,10 @@ class DeviceCollectionCell: UICollectionViewCell {
     @IBOutlet weak var toggleButton: UIButton!
     
     // MARK: - Properties
-    private var isOn = false
+    private var toggler: Toogler!
     var toggleAction: (() -> Void)?
+    private var buttonTap: UITapGestureRecognizer!
+    private var backgroundTap: UITapGestureRecognizer!
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -36,17 +37,23 @@ class DeviceCollectionCell: UICollectionViewCell {
         statusButton.setTitleColor(.black, for: .normal)
         statusButton.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
         
-        // Toggle background
-        toggleBackground.layer.cornerRadius = toggleBackground.frame.height / 2
-        toggleBackground.backgroundColor = .lightGray
+        // Initialize the toggler
+        toggler = Toogler(toggleBackground: toggleBackground, toggleButton: toggleButton)
+        toggler.onToggle = { [weak self] isOn in
+            self?.toggleAction?()
+        }
         
-        // Toggle knob
-        toggleButton.layer.cornerRadius = toggleButton.frame.height / 2
-        toggleButton.backgroundColor = .white
-        toggleButton.layer.shadowColor = UIColor.black.cgColor
-        toggleButton.layer.shadowOpacity = 0.2
-        toggleButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        toggleButton.layer.shadowRadius = 4
+        // Enable user interaction for both views
+        toggleButton.isUserInteractionEnabled = true
+        toggleBackground.isUserInteractionEnabled = true
+        
+        // Add tap gesture to toggle button only
+        buttonTap = UITapGestureRecognizer(target: self, action: #selector(toggleButtonTapped))
+        toggleButton.addGestureRecognizer(buttonTap)
+        
+        // Add tap gesture to background to prevent navigation but not trigger toggle
+        backgroundTap = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        toggleBackground.addGestureRecognizer(backgroundTap)
     }
     
     override func layoutSubviews() {
@@ -71,40 +78,10 @@ class DeviceCollectionCell: UICollectionViewCell {
         titleLabel.text = device.name
         subtitleLabel.text = device.subtitle
         statusButton.setTitle(device.status, for: .normal)
-        
-        isOn = device.isOn
-        updateToggle(animated: false)
+        toggler.setOn(device.isOn, animated: false)
         
         // reset selection UI when reused
         updateSelectionState()
-    }
-    
-    // MARK: - Toggle Update
-    private func updateToggle(animated: Bool = true) {
-        let knobSize = toggleButton.frame.width
-        let padding: CGFloat = 2
-        
-        let newX: CGFloat
-        let newColor: UIColor
-        
-        if isOn {
-            newX = toggleBackground.frame.width - knobSize - padding
-            newColor = .lightGray.withAlphaComponent(0.1)
-        } else {
-            newX = padding
-            newColor = .lightGray.withAlphaComponent(0.6)
-        }
-        
-        let updates = {
-            self.toggleButton.frame.origin.x = newX
-            self.toggleBackground.backgroundColor = newColor
-        }
-        
-        if animated {
-            UIView.animate(withDuration: 0.25, animations: updates)
-        } else {
-            updates()
-        }
     }
     
     // MARK: - Selection State
@@ -119,16 +96,47 @@ class DeviceCollectionCell: UICollectionViewCell {
             self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         } else {
             self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
-
         }
         self.contentView.layer.cornerRadius = 20
         self.contentView.layer.masksToBounds = true
     }
     
-    // MARK: - Actions
-    @IBAction func toggleTapped(_ sender: UIButton) {
-        isOn.toggle()
-        updateToggle()
-        toggleAction?()
+    // MARK: - Toggle Actions
+    @objc private func toggleButtonTapped() {
+        toggler.toggle()
+    }
+    
+    @objc private func backgroundTapped() {
+        // Do nothing - just prevent the cell selection
+        print("Toggle background tapped - preventing navigation")
+    }
+    
+    // MARK: - Hit Test to prevent cell selection when toggle areas are tapped
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // Convert point to toggleButton's coordinate system
+        let toggleButtonPoint = convert(point, to: toggleButton)
+        
+        // Check if the point is inside the toggle button
+        if toggleButton.bounds.contains(toggleButtonPoint) {
+            return toggleButton
+        }
+        
+        // Convert point to toggleBackground's coordinate system
+        let toggleBackgroundPoint = convert(point, to: toggleBackground)
+        
+        // Check if the point is inside the toggle background
+        if toggleBackground.bounds.contains(toggleBackgroundPoint) {
+            return toggleBackground
+        }
+        
+        // For all other areas, let the superclass handle it
+        return super.hitTest(point, with: event)
+    }
+    
+    // MARK: - Cleanup
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Reset any necessary state when cell is reused
+        contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
     }
 }
