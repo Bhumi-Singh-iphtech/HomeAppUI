@@ -97,7 +97,7 @@
 		3B5A1B2F2E6705AB00E5AE13 /* HomeAppUI */ = {
 			isa = PBXGroup;
 			children = (
-				3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */,
+				3BFD46BF2E6AC5CB0060AED3 /* FirstScreen files */,
 				3BFD46C02E6AC6200060AED3 /* SecondScreen files */,
 				3B4B94F62E73F26C0002C6FE /* ThirdScreen files */,
 				3B989D922E796E73001138B4 /* Utility */,
@@ -145,13 +145,13 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen */ = {
+		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen files */ = {
 			isa = PBXGroup;
 			children = (
 				3B63C8A62E796C890002DFB1 /* View Controller */,
 				3B44FC042E682B8C004F65FC /* DeviceCell.swift */,
 			);
-			path = FirstScreen;
+			path = "FirstScreen files";
 			sourceTree = "<group>";
 		};
 		3BFD46C02E6AC6200060AED3 /* SecondScreen files */ = {
