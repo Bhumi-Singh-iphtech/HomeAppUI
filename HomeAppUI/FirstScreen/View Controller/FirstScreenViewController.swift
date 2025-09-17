@@ -1,9 +1,8 @@
 import UIKit
 
-class FirstScreenViewController: UIViewController {
-    
+class FirstScreenViewController: UIViewController, UIGestureRecognizerDelegate {
+
     @IBOutlet weak var SmartTVView: UIView!
-    
     @IBOutlet var gradientContainer: GradientView!
     @IBOutlet weak var tabsCollectionView: UICollectionView!
     @IBOutlet weak var scenesCollectionView: UICollectionView!
@@ -13,13 +12,9 @@ class FirstScreenViewController: UIViewController {
     
     private var toggler: Toogler!
     
-    @IBAction func mainToggleTapped(_ sender: UIButton) {
-        toggler.toggle()
-    }
-    
     let tabs = ["Living Room", "Kitchen", "Bedroom", "Balcony", "Dining", "Bathroom", "Study"]
     var selectedIndex = 0
-    // Scenes
+    
     let scenes: [(title: String, icon: String)] = [
         ("Awakening", "sun.max"),
         ("Night", "moon"),
@@ -29,79 +24,102 @@ class FirstScreenViewController: UIViewController {
     var selectedSceneIndex = 0
     
     var devices: [Device] = [
-        Device(name: "Air Conditioner", subtitle: "Samsung AR95OOT", icon: "wind",
-               status: "20°C", isOn: false),
-        
-        Device(name: "Smart Light", subtitle: "Mi LED Light", icon: "lightbulb",
-               status: "92%", isOn: false),
-        
-        Device(name: "Smart TV", subtitle: "Sony Bravia 55\"", icon: "tv",
-               status: "55%", isOn: true)
+        Device(name: "Air Conditioner", subtitle: "Samsung AR95OOT", icon: "wind", status: "20°C", isOn: false),
+        Device(name: "Smart Light", subtitle: "Mi LED Light", icon: "lightbulb", status: "92%", isOn: false),
+        Device(name: "Smart TV", subtitle: "Sony Bravia 55\"", icon: "tv", status: "55%", isOn: true)
     ]
-    var selectedDeviceIndex = 0   // 🔹 Added this
-
+    var selectedDeviceIndex = 0
     
     override func viewDidLoad() {
-     
-        super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SmartTVTapped))
+            super.viewDidLoad()
+           
+            // Setup SmartTV tap
+            let tap = UITapGestureRecognizer(target: self, action: #selector(SmartTVTapped))
+            tap.delegate = self
             SmartTVView.addGestureRecognizer(tap)
             SmartTVView.isUserInteractionEnabled = true
-        toggler = Toogler(toggleBackground: toggleBackground, toggleButton: toggleButton)
-        toggler.onToggle = { isOn in
-            print("Main toggle state:", isOn)
             
+            // Setup toggle
+            toggler = Toogler(toggleBackground: toggleBackground, toggleButton: toggleButton)
             
+            // Only the button should handle taps for toggling
+            toggleButton.addTarget(self, action: #selector(mainToggleTapped(_:)), for: .touchUpInside)
             
+        
+            // Make sure background doesn't interfere with navigation
+            let toggleBackgroundTap = UITapGestureRecognizer(target: self, action: #selector(toggleBackgroundTapped))
+            toggleBackgroundTap.delegate = self
+            toggleBackground.addGestureRecognizer(toggleBackgroundTap)
+            
+            toggler.onToggle = { isOn in
+                print("Main toggle state:", isOn)
+            }
+            
+            setupCollectionViews()
+        }
+    @objc func toggleBackgroundTapped() {
             
         }
+
+        // MARK: - Toggle actions
+        @objc func mainToggleTapped(_ sender: UIButton) {
+            toggler.toggle()
+        }
     
-        // Tabs setup
+        
+       
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            // Prevent navigation if tap is on the toggle area
+            let touchPoint = touch.location(in: self.view)
+            
+            if toggleBackground.frame.contains(touchPoint) {
+                return false
+            }
+            
+            return true
+        }
+    @objc func SmartTVTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let thirdVC = storyboard.instantiateViewController(withIdentifier: "ThirdScreenViewController") as? ThirdScreenViewController {
+            thirdVC.deviceTitle = "Smart TV"
+            thirdVC.deviceSubtitle = "Samsung AR95OOT"
+            self.navigationController?.pushViewController(thirdVC, animated: true)
+        }
+    }
+    
+    // MARK: - Setup CollectionViews
+    func setupCollectionViews() {
+        // Tabs
         if let layout = tabsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 10
-            layout.sectionInset = .zero
         }
         tabsCollectionView.delegate = self
         tabsCollectionView.dataSource = self
         tabsCollectionView.backgroundColor = .clear
         tabsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TabCell")
         
-        // Scenes setup
+        // Scenes
         if let layout = scenesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 0
-            layout.sectionInset = .zero
         }
         scenesCollectionView.delegate = self
         scenesCollectionView.dataSource = self
-        scenesCollectionView.backgroundColor = .white.withAlphaComponent(0.6)
+        scenesCollectionView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         scenesCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SceneCell")
         
-        // Devices setup
+        // Devices
         if let layout = devicesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = 10
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.sectionInset = .zero
         }
         devicesCollectionView.delegate = self
         devicesCollectionView.dataSource = self
         devicesCollectionView.backgroundColor = .clear
     }
-    @objc func SmartTVTapped() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let thirdVC = storyboard.instantiateViewController(withIdentifier: "ThirdScreenViewController") as? ThirdScreenViewController {
-            
-            // Pass the data for title and subtitle
-            thirdVC.deviceTitle = "Smart TV"
-            thirdVC.deviceSubtitle = "Samsung AR95OOT"
-
-            self.navigationController?.pushViewController(thirdVC, animated: true)
-        }
-    }
-
-    
 }
 
 // MARK: - CollectionView
@@ -197,7 +215,7 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeviceCell.identifier, for: indexPath) as! DeviceCell
             cell.configure(with: devices[indexPath.item])
             
-            // 🔹 Selection UI logic for devices
+            //  Selection for devices
             if indexPath.item == selectedDeviceIndex {
                 cell.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
             } else {
@@ -229,7 +247,7 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
         }
         
         else if collectionView == scenesCollectionView {
-            // ✅ NEW: update selectedSceneIndex and reload
+            // update selectedSceneIndex and reload
             selectedSceneIndex = indexPath.item
             scenesCollectionView.reloadData()
         }
