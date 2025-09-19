@@ -9,15 +9,9 @@ class ThirdScreenViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    
-    
     @IBOutlet weak var scheduleView: UIView!
-    
-    
     @IBOutlet weak var scheduleView2: UIView!
-    
     @IBOutlet weak var optionsCollectionView: UICollectionView!
-    
     @IBOutlet var gradientContainer: CustomGradientView!
     @IBOutlet weak var temperatureView: TemperatureCircleView!
     @IBOutlet weak var modesCollectionView: UICollectionView!
@@ -29,14 +23,14 @@ class ThirdScreenViewController: UIViewController {
             ("Settings", "gearshape")
         ]
     
-    // Modes data - Using the same circular design as scenes
+    
     let modes: [(title: String, icon: String)] = [
         ("Hot", "sun.max"),
         ("Cold", "snowflake"),
         ("Dry Air", "wind"),
         ("Humid", "drop")
     ]
-    var selectedModeIndex = 1 // Default to Cold
+    var selectedModeIndex = 1
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -95,10 +89,11 @@ class ThirdScreenViewController: UIViewController {
     }
     
     private func setupModesCollectionView() {
-        // Modes setup - SAME AS SCENES COLLECTION VIEW
+        
         if let layout = modesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 0
+            layout.minimumLineSpacing = 2
+            layout.minimumInteritemSpacing = 2
             layout.sectionInset = .zero
         }
         modesCollectionView.delegate = self
@@ -131,16 +126,12 @@ class ThirdScreenViewController: UIViewController {
         return cell
     }
     
-    private func modesSizeForItem() -> CGSize {
-        let width = modesCollectionView.frame.width / 4
-        return CGSize(width: width, height: 110)
-    }
-    
+   
     private func modesDidSelectItem(at indexPath: IndexPath) {
         selectedModeIndex = indexPath.item
         modesCollectionView.reloadData()
         
-        // Handle mode selection logic here
+        // Handle mode selection
         let selectedMode = modes[indexPath.item]
         activateMode(selectedMode)
     }
@@ -168,7 +159,7 @@ extension ThirdScreenViewController: UICollectionViewDelegate, UICollectionViewD
     // MARK: - Modes collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == modesCollectionView {
-            return modesNumberOfItems() // call your function properly
+            return modesNumberOfItems()
         } else {
             return options.count
         }
@@ -202,9 +193,12 @@ extension ThirdScreenViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == modesCollectionView {
-            return modesSizeForItem()
+            let width = collectionView.frame.width / 4
+            return CGSize(width: width, height: 110)
+
+           
         } else {
-            let width = collectionView.frame.width - 20 // 10 left + 10 right insets
+            let width = collectionView.frame.width - 20
             let height: CGFloat = 70
             return CGSize(width: width, height: height)
         }
@@ -224,33 +218,4 @@ extension ThirdScreenViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 
-// MARK: - Custom Gradient View
-class CustomGradientView: UIView {
-    private let gradientLayer = CAGradientLayer()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupGradient()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupGradient()
-    }
-    
-    private func setupGradient() {
-        gradientLayer.colors = [
-            UIColor(red: 242/255, green: 212/255, blue: 176/255, alpha: 1).cgColor,
-            UIColor(red: 158/255, green: 203/255, blue: 213/255, alpha: 1).cgColor
-        ]
-        
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = bounds
-    }
-}
+

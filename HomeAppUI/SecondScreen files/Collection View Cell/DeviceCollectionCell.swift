@@ -133,10 +133,10 @@ class DeviceCollectionCell: UICollectionViewCell {
         return super.hitTest(point, with: event)
     }
     
-    // MARK: - Cleanup
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        // Reset any necessary state when cell is reused
+       
         contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
     }
 }

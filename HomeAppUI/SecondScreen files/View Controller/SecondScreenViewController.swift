@@ -16,7 +16,7 @@ class SecondScreenViewController: UIViewController {
        }
     
     var devices: [Device] = [
-        Device(name: "Air Conditioner", subtitle: "Samsung AR9500T", icon: "wind", status: "20°C", isOn: true),
+        Device(name: "Air Conditioner", subtitle: "Samsung AR95OOT", icon: "wind", status: "20°C", isOn: true),
         Device(name: "Smart Light", subtitle: "Mi Smart LED Ceiling Light", icon: "bulb 1", status: "92%", isOn: true),
         Device(name: "Vacuum Cleaner", subtitle: "Xiaomi CDZC108", icon: "vacuum-cleaner", status: "43%", isOn: false),
         Device(name: "Vacuum Cleaner", subtitle: "Xiaomi CDZC108", icon: "vacuum-cleaner", status: "43%", isOn: false)

@@ -229,7 +229,7 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="228" height="176"/>
                                                         <connections>
-                                                            <outlet property="iconView" destination="APA-s0-SO3" id="oas-lE-cxX"/>
+                                                            <outlet property="iconView" destination="APA-s0-SO3" id="2so-9r-2Ch"/>
                                                             <outlet property="statusButton" destination="W56-Nl-XoC" id="moL-Ou-jfK"/>
                                                             <outlet property="subtitleLabel" destination="4Kz-Pv-H6n" id="qXm-DW-stu"/>
                                                             <outlet property="titleLabel" destination="obh-Ec-clJ" id="y9j-Yg-U1X"/>
@@ -945,27 +945,28 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-lP-yD7">
-                                                <rect key="frame" x="8" y="457" width="385" height="152"/>
+                                                <rect key="frame" x="17" y="457" width="376" height="152"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="385" id="5e1-ME-rhJ"/>
+                                                    <constraint firstAttribute="width" constant="376" id="5e1-ME-rhJ"/>
                                                     <constraint firstAttribute="height" constant="152" id="any-N5-6pr"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="385" id="uuf-0d-Hfj"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="376" id="uuf-0d-Hfj"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YE4-8m-Gmx">
-                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="itemSize" width="139" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ModeCell" id="1If-lQ-2Kt" customClass="ModeCollectionViewCell" customModule="HomeAppUI" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="12" width="128" height="128"/>
+                                                        <rect key="frame" x="0.0" y="12" width="139" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7XK-Tx-h4z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="139" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </collectionViewCellContentView>
+                                                        <size key="customSize" width="139" height="128"/>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <userDefinedRuntimeAttributes>
@@ -1232,7 +1233,7 @@
                                             <constraint firstItem="ZYC-9q-Jhk" firstAttribute="top" secondItem="MDM-4y-Qan" secondAttribute="top" constant="36" id="NWO-Q0-KDQ"/>
                                             <constraint firstItem="XZS-Jz-b09" firstAttribute="centerX" secondItem="MDM-4y-Qan" secondAttribute="centerX" constant="0.5" id="OaY-Xw-hk4"/>
                                             <constraint firstAttribute="bottom" secondItem="VXe-eB-uSZ" secondAttribute="bottom" constant="69" id="TZv-72-hfi"/>
-                                            <constraint firstItem="ya8-lP-yD7" firstAttribute="leading" secondItem="MDM-4y-Qan" secondAttribute="leading" constant="8" id="V7T-Mz-RSp"/>
+                                            <constraint firstItem="ya8-lP-yD7" firstAttribute="leading" secondItem="MDM-4y-Qan" secondAttribute="leading" constant="17" id="V7T-Mz-RSp"/>
                                             <constraint firstItem="XZS-Jz-b09" firstAttribute="centerY" secondItem="MDM-4y-Qan" secondAttribute="centerY" constant="-137.5" id="Y3Z-aK-cdA"/>
                                             <constraint firstItem="VXe-eB-uSZ" firstAttribute="top" secondItem="ya8-lP-yD7" secondAttribute="bottom" constant="18" id="cGe-zK-HaS"/>
                                             <constraint firstAttribute="trailing" secondItem="ZYC-9q-Jhk" secondAttribute="trailing" constant="8" id="dD9-he-JyH"/>

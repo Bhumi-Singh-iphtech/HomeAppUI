@@ -56,10 +56,26 @@ class DeviceCell: UICollectionViewCell {
     }
     
     func configure(with device: Device) {
-        iconView.image = UIImage(systemName: device.icon)
+        // Safe way to load system images with fallback
+        if let systemImage = UIImage(systemName: device.icon) {
+            iconView.image = systemImage
+        } else {
+            // Fallback to a default image if the system icon isn't found
+            iconView.image = UIImage(systemName: "questionmark.circle")
+            print("Warning: System image '\(device.icon)' not found")
+        }
+        
         titleLabel.text = device.name
         subtitleLabel.text = device.subtitle
         statusButton.setTitle(device.status, for: .normal)
         toggler.setOn(device.isOn, animated: false)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
+        statusButton.setTitle(nil, for: .normal)
     }
 }

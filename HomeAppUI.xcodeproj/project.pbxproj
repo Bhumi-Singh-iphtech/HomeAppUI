@@ -23,6 +23,10 @@
 		3B5A1B3D2E6705B100E5AE13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5A1B3B2E6705B100E5AE13 /* LaunchScreen.storyboard */; };
 		3B989D8F2E796E24001138B4 /* Toogler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B989D8E2E796E24001138B4 /* Toogler.swift */; };
 		3B989D912E796E5F001138B4 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B989D902E796E5F001138B4 /* NavigationHelper.swift */; };
+		3BD849F92E7BC6EC007A98B7 /* FirstGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD849F82E7BC6EC007A98B7 /* FirstGradientView.swift */; };
+		3BF61EC22E7D17E40001CE73 /* ThirdGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF61EC12E7D17E40001CE73 /* ThirdGradientView.swift */; };
+		3BF61EC42E7D1B6B0001CE73 /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF61EC32E7D1B6B0001CE73 /* TabCell.swift */; };
+		3BF61EC62E7D1D130001CE73 /* SceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF61EC52E7D1D130001CE73 /* SceneCell.swift */; };
 		3BFD46BE2E6ABA980060AED3 /* DeviceCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,10 @@
 		3B5A1B3E2E6705B100E5AE13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B989D8E2E796E24001138B4 /* Toogler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toogler.swift; sourceTree = "<group>"; };
 		3B989D902E796E5F001138B4 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
+		3BD849F82E7BC6EC007A98B7 /* FirstGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstGradientView.swift; sourceTree = "<group>"; };
+		3BF61EC12E7D17E40001CE73 /* ThirdGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdGradientView.swift; sourceTree = "<group>"; };
+		3BF61EC32E7D1B6B0001CE73 /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
+		3BF61EC52E7D1D130001CE73 /* SceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCell.swift; sourceTree = "<group>"; };
 		3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,9 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				3B63C8A72E796CA60002DFB1 /* View Controller */,
-				3B3BAE662E71A3FB00967DED /* ControlOptionCell.swift */,
+				3B6FDEF72E7D35A5008C80B4 /* Collection View Cell */,
 				3B02BA812E704B830082F1B3 /* TemperatureCircleView.swift */,
-				3B3BAE642E7192CA00967DED /* ModesCollectionViewCell.swift */,
+				3BF61EC12E7D17E40001CE73 /* ThirdGradientView.swift */,
 			);
 			path = "ThirdScreen files";
 			sourceTree = "<group>";
@@ -136,6 +144,23 @@
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
+		3B6FDEF72E7D35A5008C80B4 /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3B3BAE642E7192CA00967DED /* ModesCollectionViewCell.swift */,
+				3B3BAE662E71A3FB00967DED /* ControlOptionCell.swift */,
+			);
+			path = "Collection View Cell";
+			sourceTree = "<group>";
+		};
+		3B6FDEF82E7D3682008C80B4 /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */,
+			);
+			path = "Collection View Cell";
+			sourceTree = "<group>";
+		};
 		3B989D922E796E73001138B4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,11 +170,22 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		3BF61EC72E7D1E800001CE73 /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BF61EC32E7D1B6B0001CE73 /* TabCell.swift */,
+				3BF61EC52E7D1D130001CE73 /* SceneCell.swift */,
+				3B44FC042E682B8C004F65FC /* DeviceCell.swift */,
+			);
+			path = "Collection View Cell";
+			sourceTree = "<group>";
+		};
 		3BFD46BF2E6AC5CB0060AED3 /* FirstScreen files */ = {
 			isa = PBXGroup;
 			children = (
 				3B63C8A62E796C890002DFB1 /* View Controller */,
-				3B44FC042E682B8C004F65FC /* DeviceCell.swift */,
+				3BF61EC72E7D1E800001CE73 /* Collection View Cell */,
+				3BD849F82E7BC6EC007A98B7 /* FirstGradientView.swift */,
 			);
 			path = "FirstScreen files";
 			sourceTree = "<group>";
@@ -158,8 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				3B63C8A52E796C5F0002DFB1 /* View Controller */,
+				3B6FDEF82E7D3682008C80B4 /* Collection View Cell */,
 				3B44C9EF2E697CE400312211 /* SecondGradientView.swift */,
-				3BFD46BD2E6ABA980060AED3 /* DeviceCollectionCell.swift */,
 			);
 			path = "SecondScreen files";
 			sourceTree = "<group>";
@@ -236,14 +272,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5A1B352E6705AB00E5AE13 /* FirstScreenViewController.swift in Sources */,
+				3BD849F92E7BC6EC007A98B7 /* FirstGradientView.swift in Sources */,
 				3B4311DF2E6AF36A008C5E39 /* ThirdScreenViewController.swift in Sources */,
 				3B44FC032E682B41004F65FC /* DeviceModel.swift in Sources */,
 				3B5A1B312E6705AB00E5AE13 /* AppDelegate.swift in Sources */,
 				3B44C9EE2E697C3500312211 /* SecondScreenViewController.swift in Sources */,
+				3BF61EC42E7D1B6B0001CE73 /* TabCell.swift in Sources */,
+				3BF61EC22E7D17E40001CE73 /* ThirdGradientView.swift in Sources */,
 				3B989D8F2E796E24001138B4 /* Toogler.swift in Sources */,
 				3B3BAE672E71A3FB00967DED /* ControlOptionCell.swift in Sources */,
 				3B3BAE652E7192CA00967DED /* ModesCollectionViewCell.swift in Sources */,
 				3B44C9F02E697CE400312211 /* SecondGradientView.swift in Sources */,
+				3BF61EC62E7D1D130001CE73 /* SceneCell.swift in Sources */,
 				3B989D912E796E5F001138B4 /* NavigationHelper.swift in Sources */,
 				3B02BA822E704B830082F1B3 /* TemperatureCircleView.swift in Sources */,
 				3B44FC052E682B8C004F65FC /* DeviceCell.swift in Sources */,

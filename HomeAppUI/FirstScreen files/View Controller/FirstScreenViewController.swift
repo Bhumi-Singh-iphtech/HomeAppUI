@@ -31,53 +31,47 @@ class FirstScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     var selectedDeviceIndex = 0
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-           
-            // Setup SmartTV tap
-            let tap = UITapGestureRecognizer(target: self, action: #selector(SmartTVTapped))
-            tap.delegate = self
-            SmartTVView.addGestureRecognizer(tap)
-            SmartTVView.isUserInteractionEnabled = true
-            
-            // Setup toggle
-            toggler = Toogler(toggleBackground: toggleBackground, toggleButton: toggleButton)
-            
-            // Only the button should handle taps for toggling
-            toggleButton.addTarget(self, action: #selector(mainToggleTapped(_:)), for: .touchUpInside)
-            
-        
-            // Make sure background doesn't interfere with navigation
-            let toggleBackgroundTap = UITapGestureRecognizer(target: self, action: #selector(toggleBackgroundTapped))
-            toggleBackgroundTap.delegate = self
-            toggleBackground.addGestureRecognizer(toggleBackgroundTap)
-            
-            toggler.onToggle = { isOn in
-                print("Main toggle state:", isOn)
-            }
-            
-            setupCollectionViews()
-        }
-    @objc func toggleBackgroundTapped() {
-            
-        }
-
-        // MARK: - Toggle actions
-        @objc func mainToggleTapped(_ sender: UIButton) {
-            toggler.toggle()
-        }
-    
-        
+        super.viewDidLoad()
        
-        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-            // Prevent navigation if tap is on the toggle area
-            let touchPoint = touch.location(in: self.view)
-            
-            if toggleBackground.frame.contains(touchPoint) {
-                return false
-            }
-            
-            return true
+        // Setup SmartTV tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SmartTVTapped))
+        tap.delegate = self
+        SmartTVView.addGestureRecognizer(tap)
+        SmartTVView.isUserInteractionEnabled = true
+        
+        // Setup toggle
+        toggler = Toogler(toggleBackground: toggleBackground, toggleButton: toggleButton)
+        toggleButton.addTarget(self, action: #selector(mainToggleTapped(_:)), for: .touchUpInside)
+        let toggleBackgroundTap = UITapGestureRecognizer(target: self, action: #selector(toggleBackgroundTapped))
+        toggleBackgroundTap.delegate = self
+        toggleBackground.addGestureRecognizer(toggleBackgroundTap)
+        toggler.onToggle = { isOn in
+            print("Main toggle state:", isOn)
         }
+        
+        setupCollectionViews()
+    }
+    
+    @objc func toggleBackgroundTapped() {
+        
+    }
+
+    // MARK: - Toggle actions
+    @objc func mainToggleTapped(_ sender: UIButton) {
+        toggler.toggle()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // Prevent navigation if tap is on the toggle area
+        let touchPoint = touch.location(in: self.view)
+        
+        if toggleBackground.frame.contains(touchPoint) {
+            return false
+        }
+        
+        return true
+    }
+    
     @objc func SmartTVTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let thirdVC = storyboard.instantiateViewController(withIdentifier: "ThirdScreenViewController") as? ThirdScreenViewController {
@@ -97,7 +91,7 @@ class FirstScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         tabsCollectionView.delegate = self
         tabsCollectionView.dataSource = self
         tabsCollectionView.backgroundColor = .clear
-        tabsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TabCell")
+        tabsCollectionView.register(TabCell.self, forCellWithReuseIdentifier: TabCell.identifier)
         
         // Scenes
         if let layout = scenesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -107,7 +101,7 @@ class FirstScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         scenesCollectionView.delegate = self
         scenesCollectionView.dataSource = self
         scenesCollectionView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
-        scenesCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SceneCell")
+        scenesCollectionView.register(SceneCell.self, forCellWithReuseIdentifier: SceneCell.identifier)
         
         // Devices
         if let layout = devicesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -119,7 +113,20 @@ class FirstScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         devicesCollectionView.delegate = self
         devicesCollectionView.dataSource = self
         devicesCollectionView.backgroundColor = .clear
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRoomDetail" {
+            if let destinationVC = segue.destination as? SecondScreenViewController,
+               let roomName = sender as? String {
+                destinationVC.selectedRoom = roomName
+                destinationVC.modalPresentationStyle = .fullScreen
+            }
+        }
+    }
+    
+    
 }
 
 // MARK: - CollectionView
@@ -139,83 +146,20 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == tabsCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabCell", for: indexPath)
-            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-            
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = tabs[indexPath.item]
-            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            label.textAlignment = .center
-            
-            if selectedIndex == indexPath.item {
-                cell.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
-                label.textColor = .black
-            } else {
-                cell.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-                label.textColor = .darkGray
-            }
-            
-            cell.contentView.layer.cornerRadius = 20
-            cell.contentView.addSubview(label)
-            
-            NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                label.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
-            ])
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCell.identifier, for: indexPath) as! TabCell
+            cell.configure(with: tabs[indexPath.item], isSelected: selectedIndex == indexPath.item)
             return cell
             
         } else if collectionView == scenesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SceneCell", for: indexPath)
-            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-            
-            let scene = scenes[indexPath.item]
-            
-            let circleView = UIView()
-            circleView.translatesAutoresizingMaskIntoConstraints = false
-            circleView.layer.cornerRadius = 35
-            circleView.clipsToBounds = true
-            circleView.backgroundColor = indexPath.item == selectedSceneIndex ? .white : UIColor.gray.withAlphaComponent(0.2)
-            
-            let imageView = UIImageView(image: UIImage(systemName: scene.icon))
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleAspectFit
-            imageView.tintColor = indexPath.item == selectedSceneIndex ? .black : .black.withAlphaComponent(0.6)
-            
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = scene.title
-            label.font = UIFont.systemFont(ofSize: 14)
-            label.textAlignment = .center
-            label.textColor = indexPath.item == selectedSceneIndex ? .black : .gray
-            
-            cell.contentView.addSubview(circleView)
-            circleView.addSubview(imageView)
-            cell.contentView.addSubview(label)
-            
-            NSLayoutConstraint.activate([
-                circleView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                circleView.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-                circleView.widthAnchor.constraint(equalToConstant: 70),
-                circleView.heightAnchor.constraint(equalToConstant: 70),
-                
-                imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
-                imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 28),
-                imageView.heightAnchor.constraint(equalToConstant: 28),
-                
-                label.topAnchor.constraint(equalTo: circleView.bottomAnchor, constant: 6),
-                label.centerXAnchor.constraint(equalTo: circleView.centerXAnchor)
-            ])
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SceneCell.identifier, for: indexPath) as! SceneCell
+            cell.configure(with: scenes[indexPath.item], isSelected: selectedSceneIndex == indexPath.item)
             return cell
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeviceCell.identifier, for: indexPath) as! DeviceCell
             cell.configure(with: devices[indexPath.item])
             
-            //  Selection for devices
+            // Selection for devices collection view
             if indexPath.item == selectedDeviceIndex {
                 cell.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
             } else {
@@ -225,15 +169,7 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
             return cell
         }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showRoomDetail" {
-            if let destinationVC = segue.destination as? SecondScreenViewController,
-               let roomName = sender as? String {
-                destinationVC.selectedRoom = roomName
-                destinationVC.modalPresentationStyle = .fullScreen  
-            }
-        }
-    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == tabsCollectionView {
             selectedIndex = indexPath.item
@@ -260,9 +196,6 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
             goToDeviceDetail(title: selectedDevice.name, subtitle: selectedDevice.subtitle)
         }
     }
-
-
-
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -282,37 +215,5 @@ extension FirstScreenViewController: UICollectionViewDelegate, UICollectionViewD
             return CGSize(width: width, height: 200)
         }
         return CGSize(width: 100, height: 100)
-    }
-}
-
-
-// MARK: - Gradient View
-class GradientView: UIView {
-    private let gradientLayer = CAGradientLayer()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupGradient()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupGradient()
-    }
-    
-    private func setupGradient() {
-        gradientLayer.colors = [
-            UIColor(red: 242/255, green: 212/255, blue: 176/255, alpha: 1).cgColor,
-            UIColor(red: 246/255, green: 226/255, blue: 240/255, alpha: 1).cgColor,
-            UIColor(red: 158/255, green: 203/255, blue: 213/255, alpha: 1).cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = bounds
     }
 }
